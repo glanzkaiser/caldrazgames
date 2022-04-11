@@ -99,7 +99,7 @@ def Play_Sudoku(Solved_Board,Unsolved_Board):
     while True:    
         row=int(input("Entrez la ligne pour inserer le numero:")) - 1
         col=int(input("Entrez la colonne pour inserer le numero:")) - 1
-        number_check=int(input("Entrez le numéro (ou appuyez sur 10 pour quitter):"))
+        number_check=int(input("Entrez le numero (ou appuyez sur 10 pour quitter):"))
         if number_check!=10:
             if Unsolved_Board[row,col]==0:
                 print(Solved_Board[row,col])
