@@ -97,8 +97,8 @@ def Generate_Unsolved_Puzzle(board,difficulty):
 
 def Play_Sudoku(Solved_Board,Unsolved_Board):
     while True:    
-        row=int(input("Entrez la ligne pour insérer le numéro:")) - 1
-        col=int(input("Entrez la colonne pour insérer le numéro:")) - 1
+        row=int(input("Entrez la ligne pour inserer le numero:")) - 1
+        col=int(input("Entrez la colonne pour inserer le numero:")) - 1
         number_check=int(input("Entrez le numéro (ou appuyez sur 10 pour quitter):"))
         if number_check!=10:
             if Unsolved_Board[row,col]==0:
@@ -111,14 +111,14 @@ def Play_Sudoku(Solved_Board,Unsolved_Board):
                     print("Incorrect!")
                     Print_Board(Unsolved_Board)
             else:
-                print("Cet emplacement est déjà correctement rempli!")
+                print("Cet emplacement est deja correctement rempli!")
             if np.array_equal(Solved_Board,Unsolved_Board):
-                print("Félicitations pour avoir résolu le sudoku!")
+                print("Felicitations pour avoir resolu le sudoku!")
                 break
         else:
             print("\nLe tableau résolu est:")
             Print_Board(Solved_Board)
-            print("\nMerci d'avoir joué!\nReviens un autre jour.\nSalutations,\nVotre sympathique programmeur de quartier")
+            print("\nMerci d'avoir joue!\nReviens un autre jour.\nSalutations,\nVotre sympathique programmeur de quartier")
             return
 
 #Solving any unsolved sudoku puzzle is done here, first call generates a solved puzzle
@@ -143,7 +143,7 @@ def Solve_Sudoku(board,not_check):
 #Inputs difficulty and initializes playing board
 
 def main():
-    ch=int(input("Bienvenue sur Sudoku! Choisissez le niveau de difficulté-\n1.Easy/Facile\n2.Medium/Moyen\n3.Hard/Difficile\nYour choice:"))
+    ch=int(input("Bienvenue sur Sudoku! Choisissez le niveau de difficulte-\n1.Easy/Facile\n2.Medium/Moyen\n3.Hard/Difficile\nVotre choix:"))
     if ch==1:
         difficulty="Easy/Facile"
     elif ch==2:
@@ -153,7 +153,7 @@ def main():
     board=np.zeros((9,9),dtype="int8")
     if Solve_Sudoku(board,-1):
         Solved_Board=board.copy()
-        print("\n\nL'énigme non résolue est:\n")
+        print("\n\nL'enigme non resolue est:\n")
         Generate_Unsolved_Puzzle(board,difficulty)
         Print_Board(board)
         Unsolved_Board=board.copy()
