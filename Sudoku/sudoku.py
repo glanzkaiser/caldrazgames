@@ -54,14 +54,14 @@ def Check_Validity(board,row,col,num):
 
 def Generate_Unsolved_Puzzle(board,difficulty):
     count,done=0,False
-    if difficulty == "Easy/Facile":
-        print("Attendez s'il vous plaît...\n\n")
+    if difficulty == "Facile":
+        print("Attendez s'il vous plait...\n\n")
         upper_limit=35
-    elif difficulty == "Medium/Moyen":
-        print("Attendez s'il vous plaît...\n\n")
+    elif difficulty == "Moyen":
+        print("Attendez s'il vous plait...\n\n")
         upper_limit=41
     else:
-        print("Attendez s'il vous plaît...\n\n")
+        print("Attendez s'il vous plait...\n\n")
         upper_limit=47
     while True:   
         i=random.randint(0,8)
@@ -76,11 +76,11 @@ def Generate_Unsolved_Puzzle(board,difficulty):
                     continue
                 row_start=(i//3)*3
                 col_start=(j//3)*3
-                if difficulty == "Easy/Facile":
+                if difficulty == "Facile":
                     if np.count_nonzero(board[row_start:row_start+3,col_start:col_start+3])<5:
                         board[i,j]=not_check
                         continue
-                elif difficulty == "Medium/Moyen":
+                elif difficulty == "Moyen":
                     if np.count_nonzero(board[row_start:row_start+3,col_start:col_start+3])<4:
                         board[i,j]=not_check
                         continue
@@ -116,7 +116,7 @@ def Play_Sudoku(Solved_Board,Unsolved_Board):
                 print("Felicitations pour avoir resolu le sudoku!")
                 break
         else:
-            print("\nLe tableau résolu est:")
+            print("\nLe tableau resolu est:")
             Print_Board(Solved_Board)
             print("\nMerci d'avoir joue!\nReviens un autre jour.\nSalutations,\nVotre sympathique programmeur de quartier")
             return
@@ -143,13 +143,13 @@ def Solve_Sudoku(board,not_check):
 #Inputs difficulty and initializes playing board
 
 def main():
-    ch=int(input("Bienvenue sur Sudoku! Choisissez le niveau de difficulte-\n1.Easy/Facile\n2.Medium/Moyen\n3.Hard/Difficile\nVotre choix:"))
+    ch=int(input("Bienvenue sur Sudoku! Choisissez le niveau de difficulte-\n1.Facile\n2.Moyen\n3.Difficile\nVotre choix:"))
     if ch==1:
-        difficulty="Easy/Facile"
+        difficulty="Facile"
     elif ch==2:
-        difficulty="Medium/Moyen"
+        difficulty="Moyen"
     else:
-        difficulty="Hard/Difficile"
+        difficulty="Difficile"
     board=np.zeros((9,9),dtype="int8")
     if Solve_Sudoku(board,-1):
         Solved_Board=board.copy()
