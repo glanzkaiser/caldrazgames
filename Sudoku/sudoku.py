@@ -1,3 +1,8 @@
+#Created by @sarthak1905
+#Author Name-Sarthak Saxena
+#Dated 4th May,2020
+#Contact me on GitHub if you find any glitches or have any recommendations!
+
 import numpy as np
 import random
 
@@ -49,14 +54,14 @@ def Check_Validity(board,row,col,num):
 
 def Generate_Unsolved_Puzzle(board,difficulty):
     count,done=0,False
-    if difficulty is "Easy":
-        print("Easy Difficulty Puzzle Generating...\n\n")
+    if difficulty == "Easy/Facile":
+        print("Attendez s'il vous plaît...\n\n")
         upper_limit=35
-    elif difficulty is "Medium":
-        print("Medium Difficulty Puzzle Generating...\n\n")
+    elif difficulty == "Medium/Moyen":
+        print("Attendez s'il vous plaît...\n\n")
         upper_limit=41
     else:
-        print("Hard Difficulty Puzzle Generating...\n\n")
+        print("Attendez s'il vous plaît...\n\n")
         upper_limit=47
     while True:   
         i=random.randint(0,8)
@@ -71,11 +76,11 @@ def Generate_Unsolved_Puzzle(board,difficulty):
                     continue
                 row_start=(i//3)*3
                 col_start=(j//3)*3
-                if difficulty is "Easy":
+                if difficulty == "Easy/Facile":
                     if np.count_nonzero(board[row_start:row_start+3,col_start:col_start+3])<5:
                         board[i,j]=not_check
                         continue
-                elif difficulty is "Medium":
+                elif difficulty == "Medium/Moyen":
                     if np.count_nonzero(board[row_start:row_start+3,col_start:col_start+3])<4:
                         board[i,j]=not_check
                         continue
@@ -92,28 +97,28 @@ def Generate_Unsolved_Puzzle(board,difficulty):
 
 def Play_Sudoku(Solved_Board,Unsolved_Board):
     while True:    
-        row=int(input("Enter the row to insert number:")) - 1
-        col=int(input("Enter the column to insert number:")) - 1
-        number_check=int(input("Enter the number(or press 10 to exit):"))
+        row=int(input("Entrez la ligne pour insérer le numéro:")) - 1
+        col=int(input("Entrez la colonne pour insérer le numéro:")) - 1
+        number_check=int(input("Entrez le numéro (ou appuyez sur 10 pour quitter):"))
         if number_check!=10:
             if Unsolved_Board[row,col]==0:
                 print(Solved_Board[row,col])
                 if Solved_Board[row,col]==number_check:
-                    print("Correct! Updated board:")
+                    print("Corriger! ")
                     Unsolved_Board[row,col]=number_check
                     Print_Board(Unsolved_Board)
                 else:
-                    print("Incorrect!Updated board:")
+                    print("Incorrect!")
                     Print_Board(Unsolved_Board)
             else:
-                print("That location is already correctly filled!")
+                print("Cet emplacement est déjà correctement rempli!")
             if np.array_equal(Solved_Board,Unsolved_Board):
-                print("Congrats on solving the sudoku!")
+                print("Félicitations pour avoir résolu le sudoku!")
                 break
         else:
-            print("\nThe solved board is:")
+            print("\nLe tableau résolu est:")
             Print_Board(Solved_Board)
-            print("\nThank you for playing!\nWe hope to see you again.\nRegards,\nYour friendly neighbourhood programmer")
+            print("\nMerci d'avoir joué!\nReviens un autre jour.\nSalutations,\nVotre sympathique programmeur de quartier")
             return
 
 #Solving any unsolved sudoku puzzle is done here, first call generates a solved puzzle
@@ -138,23 +143,23 @@ def Solve_Sudoku(board,not_check):
 #Inputs difficulty and initializes playing board
 
 def main():
-    ch=int(input("Hello!Choose the level of difficulty-\n1.Easy\n2.Medium\n3.Hard\nYour choice:"))
+    ch=int(input("Bienvenue sur Sudoku! Choisissez le niveau de difficulté-\n1.Easy/Facile\n2.Medium/Moyen\n3.Hard/Difficile\nYour choice:"))
     if ch==1:
-        difficulty="Easy"
+        difficulty="Easy/Facile"
     elif ch==2:
-        difficulty="Medium"
+        difficulty="Medium/Moyen"
     else:
-        difficulty="Hard"
+        difficulty="Hard/Difficile"
     board=np.zeros((9,9),dtype="int8")
     if Solve_Sudoku(board,-1):
         Solved_Board=board.copy()
-        print("\n\nThe unsolved puzzle is:\n")
+        print("\n\nL'énigme non résolue est:\n")
         Generate_Unsolved_Puzzle(board,difficulty)
         Print_Board(board)
         Unsolved_Board=board.copy()
         Play_Sudoku(Solved_Board,Unsolved_Board)
     else:
-        print("The board is not possible!")
+        print("Le conseil n'est pas possible!")
     return
 
 if __name__=="__main__":
