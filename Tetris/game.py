@@ -28,6 +28,8 @@ class Game:
         {'name': 'Lines', 'value': 'lines', 'format': helpers.humanize_integer},
         {'name': 'Score', 'value': 'score', 'format': helpers.humanize_integer},
         {'name': 'Time', 'value': 'duration', 'format': helpers.humanize_seconds}
+        {'name': 'Les directions: <- et ->'}
+        {'name': 'Appuyez sur 'C' pour faire pivoter'}
     ]
 
     stats = OrderedDict([
@@ -54,7 +56,6 @@ class Game:
         self.started_playing_at = None
 
         self._load_fonts()
-        self._load_sounds()
 
         stats_manager.load_stats(settings.STATS_FILE_NAME, self.stats)
 
@@ -62,8 +63,6 @@ class Game:
             save_game_manager.load_game(settings.SAVE_FILE_NAME, self, self.save_data)
 
             self.is_fast_falling = False
-
-            self._load_random_music()
 
             self._toggle_pause(True)
         else:
@@ -77,24 +76,6 @@ class Game:
             'normal': helpers.load_font('coolvetica.ttf', 18),
             'big': helpers.load_font('coolvetica.ttf', 30)
         }
-
-    def _load_sounds(self):
-        """Load the sound effects."""
-        logging.info('Loading sounds')
-
-        self.sounds = {
-            'move': helpers.load_sound('move.ogg', volume=settings.SOUNDS_VOLUME),
-            'rotate': helpers.load_sound('rotate.ogg', volume=settings.SOUNDS_VOLUME),
-            'place': helpers.load_sound('place.ogg', volume=settings.SOUNDS_VOLUME),
-            'lines_completed': helpers.load_sound('lines_completed.ogg', volume=settings.SOUNDS_VOLUME),
-            'new_level': helpers.load_sound('new_level.ogg', volume=settings.SOUNDS_VOLUME)
-        }
-
-    def _load_random_music(self):
-        """Load and play a random music."""
-        logging.info('Loading random music')
-
-        helpers.load_random_music(['its_raining_pixels.wav', 'its_always_sunny_in_the_80s.wav'], volume=settings.MUSIC_VOLUME)
 
     def _start_new_game(self):
         """Start a new game."""
@@ -115,8 +96,6 @@ class Game:
         self._set_current_tetrimino()
         self._update_falling_interval()
         self._toggle_duration_counter(True)
-
-        self._load_random_music()
 
         self.state = settings.GameState.PLAYING
 
@@ -278,14 +257,11 @@ class Game:
 
         # Did we reached a new level of difficulty?
         if self.level != new_level:
-            self.sounds['new_level'].play()
-
             self.level = new_level
 
             if not self.is_fast_falling: # If the player has pressed the down arrow, do not change the speed of the fall
                 self._update_falling_interval()
         else:
-            self.sounds['lines_completed'].play()
 
     def update(self):
         """Perform every updates of the game logic, events handling and drawing.
@@ -350,7 +326,6 @@ class Game:
             return False
 
         if not self.current_tetrimino.make_it_fall(self.fallen_blocks):
-            self.sounds['place'].play()
 
             self.fallen_blocks.extend(self.current_tetrimino.blocks.copy())
 
@@ -385,12 +360,10 @@ class Game:
                 return True
             elif event.key == pygame.K_LEFT and self.state not in [settings.GameState.PAUSED, settings.GameState.GAME_OVER]:
                 if self.current_tetrimino.move_left(self.fallen_blocks):
-                    self.sounds['move'].play()
 
                     return True
             elif event.key == pygame.K_RIGHT and self.state not in [settings.GameState.PAUSED, settings.GameState.GAME_OVER]:
                 if self.current_tetrimino.move_right(self.fallen_blocks):
-                    self.sounds['move'].play()
 
                     return True
             elif event.key == pygame.K_DOWN and self.state not in [settings.GameState.PAUSED, settings.GameState.GAME_OVER]:
@@ -398,9 +371,8 @@ class Game:
                 self.is_fast_falling = True
 
                 return True
-            elif event.key == pygame.K_UP and self.state not in [settings.GameState.PAUSED, settings.GameState.GAME_OVER]:
+            elif event.key == pygame.K_C and self.state not in [settings.GameState.PAUSED, settings.GameState.GAME_OVER]:
                 if self.current_tetrimino.rotate(self.fallen_blocks):
-                    self.sounds['rotate'].play()
 
                     return True
         elif event.type == pygame.KEYUP:
