@@ -28,8 +28,6 @@ class Game:
         {'name': 'Lines', 'value': 'lines', 'format': helpers.humanize_integer},
         {'name': 'Score', 'value': 'score', 'format': helpers.humanize_integer},
         {'name': 'Time', 'value': 'duration', 'format': helpers.humanize_seconds}
-        {'name': 'Les directions: <- et ->'}
-        {'name': 'Appuyez sur 'C' pour faire pivoter'}
     ]
 
     stats = OrderedDict([
@@ -57,6 +55,7 @@ class Game:
 
         self._load_fonts()
 
+
         stats_manager.load_stats(settings.STATS_FILE_NAME, self.stats)
 
         if os.path.isfile(settings.SAVE_FILE_NAME):
@@ -77,6 +76,8 @@ class Game:
             'big': helpers.load_font('coolvetica.ttf', 30)
         }
 
+    
+
     def _start_new_game(self):
         """Start a new game."""
         logging.info('Initializing new game')
@@ -96,6 +97,7 @@ class Game:
         self._set_current_tetrimino()
         self._update_falling_interval()
         self._toggle_duration_counter(True)
+
 
         self.state = settings.GameState.PLAYING
 
@@ -257,11 +259,12 @@ class Game:
 
         # Did we reached a new level of difficulty?
         if self.level != new_level:
+
             self.level = new_level
 
             if not self.is_fast_falling: # If the player has pressed the down arrow, do not change the speed of the fall
                 self._update_falling_interval()
-        else:
+        
 
     def update(self):
         """Perform every updates of the game logic, events handling and drawing.
@@ -326,6 +329,7 @@ class Game:
             return False
 
         if not self.current_tetrimino.make_it_fall(self.fallen_blocks):
+            self.sounds['place'].play()
 
             self.fallen_blocks.extend(self.current_tetrimino.blocks.copy())
 
@@ -360,10 +364,12 @@ class Game:
                 return True
             elif event.key == pygame.K_LEFT and self.state not in [settings.GameState.PAUSED, settings.GameState.GAME_OVER]:
                 if self.current_tetrimino.move_left(self.fallen_blocks):
+                    
 
                     return True
             elif event.key == pygame.K_RIGHT and self.state not in [settings.GameState.PAUSED, settings.GameState.GAME_OVER]:
                 if self.current_tetrimino.move_right(self.fallen_blocks):
+                    
 
                     return True
             elif event.key == pygame.K_DOWN and self.state not in [settings.GameState.PAUSED, settings.GameState.GAME_OVER]:
@@ -371,8 +377,9 @@ class Game:
                 self.is_fast_falling = True
 
                 return True
-            elif event.key == pygame.K_C and self.state not in [settings.GameState.PAUSED, settings.GameState.GAME_OVER]:
+            elif event.key == pygame.K_UP and self.state not in [settings.GameState.PAUSED, settings.GameState.GAME_OVER]:
                 if self.current_tetrimino.rotate(self.fallen_blocks):
+                    
 
                     return True
         elif event.type == pygame.KEYUP:
