@@ -329,7 +329,7 @@ class Game:
             return False
 
         if not self.current_tetrimino.make_it_fall(self.fallen_blocks):
-            self.sounds['place'].play()
+            
 
             self.fallen_blocks.extend(self.current_tetrimino.blocks.copy())
 
