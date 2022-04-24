@@ -1,0 +1,6 @@
+/opt/caldrazgames/SuperMarioBros-C/build/CMakeFiles/smbc.dir
+/opt/caldrazgames/SuperMarioBros-C/build/CMakeFiles/edit_cache.dir
+/opt/caldrazgames/SuperMarioBros-C/build/CMakeFiles/rebuild_cache.dir
+/opt/caldrazgames/SuperMarioBros-C/build/codegen/CMakeFiles/codegen.dir
+/opt/caldrazgames/SuperMarioBros-C/build/codegen/CMakeFiles/edit_cache.dir
+/opt/caldrazgames/SuperMarioBros-C/build/codegen/CMakeFiles/rebuild_cache.dir

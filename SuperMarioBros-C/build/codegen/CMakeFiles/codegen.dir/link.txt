@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/codegen.dir/parser.cpp.o CMakeFiles/codegen.dir/lexer.cpp.o CMakeFiles/codegen.dir/ast.cpp.o CMakeFiles/codegen.dir/translator.cpp.o CMakeFiles/codegen.dir/util.cpp.o -o codegen 
