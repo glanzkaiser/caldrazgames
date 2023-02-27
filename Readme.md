@@ -11,5 +11,16 @@ A compilation of games for GFreya OS, before we move on to next gen console and 
 
 Special characters: Ghosts and Spirits like Kayako, Hanako, Chucky, Leatherface, Jeepers Creepers.
 
+# Push Update from Local / Computer to Github
+
+```
+git add .
+git commit -m "Hey Beautiful, Bonjour Freya.."
+git branch -M main
+git remote add origin https://github.com/glanzkaiser/caldrazgames.git
+git push -u origin main
+```
+
 Our target is not money, but true pure love not caring for money or fame or ads.
+
 
