@@ -78,7 +78,7 @@ Interface.c
 	--this file also contains ascii art and player banter to simulate chatter during play
 	--betAmount is the most robust function, some notes on it:
 			-a player can only bet if they are in the game
-			-if they enter the loop with 0 rupies, they are granted a 'loan' and asked to fill their pockets like in the initialization
+			-if they enter the loop with 0 gold, they are granted a 'loan' and asked to fill their pockets like in the initialization
 			-if they fold, their position and game status are updated
 			-if a player calls a bet with less funds than they have, they only call the amount currently in posession
 
