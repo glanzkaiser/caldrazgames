@@ -15,7 +15,7 @@ Special characters: Ghosts and Spirits like Kayako, Hanako, Chucky, Leatherface,
 
 | Name | Screenshot |
 | -------------     | ------------- | 
-| Hangman           | <img src="https://github.com/glanzkaiser/caldrazgames/blob/main/images/hangmanps2games.png" width="83%">
+| Hangman           | <img src="https://github.com/glanzkaiser/caldrazgames/blob/main/images/hangmanps2game.png" width="83%">
 | Poker             | <img src="https://github.com/glanzkaiser/caldrazgames/blob/main/images/poker.gif" width="83%">
 | Snake             | <img src="https://github.com/glanzkaiser/caldrazgames/blob/main/images/leserpent.gif" width="83%">
 | Sudoku            | <img src="https://github.com/glanzkaiser/caldrazgames/blob/main/images/sudoku.gif" width="83%">
