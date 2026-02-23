@@ -2,14 +2,16 @@
 A compilation of games for GFreya OS, before we move on to next gen console and portable game player. 
 
 # Target
+
+Here are some of our future games that we want to create, it will take time.
+
 | Name | Details |
 | -------------     | ------------- | 
 | Racing Game            | CTR for the 8 Queens
 | RPG Game               | Real time battle like Star Ocean and Valkyrie Profile
-| Strategy Game          | Age of Empires for the 8 Queens
+| Strategy Game          | Civilization / Age of Empires for the 8 Queens
 | Card and Board Games   | Splendor, Poker, Endeavor, Ganz Clever, Broom Service with characters from the 8 Queens 
 
-Special characters: Ghosts and Spirits like Kayako, Hanako, Chucky, Leatherface, Jeepers Creepers.
 
 # Current PC Games
 
@@ -21,6 +23,7 @@ Special characters: Ghosts and Spirits like Kayako, Hanako, Chucky, Leatherface,
 | Sudoku            | <img src="https://github.com/glanzkaiser/caldrazgames/blob/main/images/sudoku.gif" width="83%">
 | SuperMarioBros    | <img src="https://github.com/glanzkaiser/caldrazgames/blob/main/images/supermariobros.gif" width="83%">
 | Tetris	    | <img src="https://github.com/glanzkaiser/caldrazgames/blob/main/images/tetris.gif" width="83%">
+| Klondike	    | <img src="https://github.com/glanzkaiser/caldrazgames/blob/main/images/Klondike.gif" width="83%">
 
 
 # Push Update from Local / Computer to Github
